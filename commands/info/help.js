@@ -19,7 +19,8 @@ module.exports = {
                     guildID: message.guild.id,
                     guildName: message.guild.name,
                     prefix: process.env.PREFIX,
-                    logChannelID: null
+                    logChannelID: null,
+                    ticketChannelID: null
                 });
     
                 newGuild.save()
@@ -44,10 +45,12 @@ async function helpMSG(client, message) {
     const embed = new Discord.MessageEmbed()
         .setColor(process.env.COLOR)
         .setTitle('ESP AYUDA')
-        .setThumbnail(client.user.avatarURL())
-        .setDescription(`For a full list of commands, please type \`${guildDB.prefix}commands\` \n\nTo see more info about a specific command, please type \`${guildDB.prefix}help <command>\` without the \`<>\``)
-        .addField('About', "ESP")
-        .addField('Links')
+        .setThumbnail(client.user.displayAvatarURL())
+        .setDescription(`Para obtener una lista completa de comandos, escriba \`${guildDB.prefix}comandos\` \n\nPara ver más información sobre un comando específico, escriba \`${guildDB.prefix}help <comando>\` sin el \`<>\``)
+        .addField('Acerca de', "ESP CUSTOMS")
+        .addField('Links', `https://twitter.com/SrgobiY
+        https://discord.gg/cqrN3Eg
+        https://www.instagram.com/teambld.eu/`)
         .setFooter('Created by SrGobi | BLD SRGOBI#0001');
     message.channel.send(embed);
 }
@@ -64,15 +67,15 @@ async function getCMD(client, message, input) {
     let info = `No se encontró información para el comando **${input.toLowerCase()}**`;
 
     if (!cmd) {
-        return message.channel.send(embed.setColor('#ff0000').setDescription(info));
+        return message.channel.send(embed.setColor('#EF990B').setDescription(info));
     }
 
     if (cmd.name) info = `**Nombre del comando**: ${cmd.name}`
-    if (cmd.aliases) info += `\n**Alias**: ${cmd.aliases.map(a => `\`{a}\``).join(', ')}`;
+    if (cmd.aliases) info += `\n**Alias**: ${guildDB.prefix}${cmd.aliases}`;
     if (cmd.description) info += `\n**Descripción**: ${cmd.description}`;
     if (cmd.usage) {
         info += `\n**Uso**: ${guildDB.prefix}${cmd.usage}`;
-        embed.setFooter('<> = REQUIRED | [] = OPTIONAL')
+        embed.setFooter('Created by SrGobi | BLD SRGOBI#0001')
     }
     if (cmd.usage2) info += `\n**Uso 2**: ${guildDB.prefix}${cmd.usage2}`;
 

@@ -14,7 +14,8 @@ module.exports = async (client, message) => {
                 guildID: message.guild.id,
                 guildName: message.guild.name,
                 prefix: process.env.PREFIX,
-                logChannelID: null
+                logChannelID: null,
+                ticketChannelID: null
             })
 
             newGuild.save()

@@ -6,6 +6,7 @@ const guildSchema = mongoose.Schema({
     guildName: String,
     prefix: String,
     logChannelID: String,
+    ticketChannelID: String,
     countChannelID: String
 });
 

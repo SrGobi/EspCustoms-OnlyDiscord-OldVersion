@@ -1,4 +1,4 @@
-# 🤖 ESP CUSTOM OLD VERSION (0.0.1b)
+# 🤖 ESP CUSTOM OLD VERSION (0.0.2b)
 Un bot simple creado para mostrar las posibilidades de codificar usando la API de Discord.js para crear funciones. Este bot no contiene Dashboard pero si se podria implementar. Obtendrá más avance con el tiempo.
 
 ## 📞Support Server
@@ -41,12 +41,14 @@ Háganos saber también qué funciones le gustaría que agreguemos en el futuro.
  | Setlogs       |    🕓    |
 
 ### Custom embeds
- | Name   | Progress |
- |--------|----------|
- | Data   |    ✔    |
- | Duo    |    ✔    |
- | Solo   |    ✔    |
- | Trio   |    ✔    |
+ | Name             | Progress |
+ |------------------|----------|
+ | Cup              |    🕓   |
+ | Data             |    ✔    |
+ | Duo              |    ✔    |
+ | Embed more args  |    ✔    |
+ | Solo             |    ✔    |
+ | Trio             |    ✔    |
 
 ### Info
  | Name       | Progress |
@@ -56,16 +58,20 @@ Háganos saber también qué funciones le gustaría que agreguemos en el futuro.
  | Comandos   |    ✔     |
  | Help       |    ✔     |
  | Invites    |    ✔     |
+ | Serverinfo |    ✔     |
  | Version    |    ✔     |
  
 ### Moderation
-| Name        | Progress |
-|-------------|----------|
-| Decir       |    ✔     |
-| Limpiar     |    ✔     |
-| Count-member|    🕓    |
-| Modlog      |    ✔     |
-| Goodbye     |    ❌    |
+| Name         | Progress |
+|---------------|----------|
+| Decir         |    ✔     |
+| Limpiar       |    ✔     |
+| Count-member  |    🕓    |
+| Modlog        |    ✔     |
+| Tickets-embed |    ✔     |
+| Tickets       |    ✔     |
+| Welcome       |    🕓    |
+| Goodbye       |    ❌    |
 
 ### Music
 | Name        | Progress |
