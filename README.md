@@ -1,5 +1,5 @@
-# 🤖 ESP CUSTOM
-Un bot simple creado para mostrar las posibilidades de codificar usando la API de Discord.js para crear funciones. Obtendrá más avance con el tiempo.
+# 🤖 ESP CUSTOM OLD VERSION
+Un bot simple creado para mostrar las posibilidades de codificar usando la API de Discord.js para crear funciones. Este bot no contiene Dashboard pero si se podria implementar. Obtendrá más avance con el tiempo.
 
 ## 📞Support Server
 Si necesita ayuda, consulte nuestro servidor de soporte y estaremos encantados de ayudarle. Pero por favor ** NO HAGA PING A NUESTRO EQUIPO DE SOPORTE **, ellos no saben mucho sobre el código, por lo que no podrán ayudarlo.
