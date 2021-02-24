@@ -92,8 +92,8 @@ Háganos saber también qué funciones le gustaría que agreguemos en el futuro.
 | Limpiar       |    ✔     |
 | Count-member  |    🕓    |
 | Modlog        |    ✔     |
-| Tickets-embed |    ✔     |
-| Tickets       |    ✔     |
+| Tickets-embed |    🕓    |
+| Tickets       |    🕓    |
 | Welcome       |    🕓    |
 | Goodbye       |    ❌    |
 
