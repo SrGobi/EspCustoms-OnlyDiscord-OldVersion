@@ -82,7 +82,6 @@ client.on('messageDelete', async message => {
     let logchannel = message.guild.channels.cache.find(ch => ch.name === 'esp-log')
     if (!logchannel) return
     //Devolver si no está habilitado.
-
     if (message.guild.channels.cache.find(ch => ch.name === "esp-log")) return;
     if (message.channel.id === 'esp-log') return
     if (message.channel.id === 'host-keys') return
@@ -90,7 +89,6 @@ client.on('messageDelete', async message => {
     if (message.channel.id === 'trio-key') return
     //Esto evitará cualquier caos al eliminar algún mensaje dentro de los canales especificados
     //Es para deshabilitar el comando/codigo especifico
-
     const txt = new Discord.MessageEmbed()
     .setAuthor("Mensaje Borrado", "https://i.imgur.com/W7dd0e7.gif")
     .setColor('#EF0B0B')
@@ -100,5 +98,18 @@ client.on('messageDelete', async message => {
 
     logchannel.send(txt)
 });
+/////////////////////////////////////////////////////  Palabras  /////////////////////////////////////////////////////
+client.on('message', async message => {
+    const FILTER_LIST = require('./blacklist.json')
+    let blacklisted = FILTER_LIST;
+    let foundInText = false;
+    for (var i in blacklisted){
+        if (message.channel.id === '<#ChannelId>', '<#OtherChannelId>') //Channels id's bloq words
+        if (message.content.toLocaleLowerCase().includes(blacklisted[i].toLocaleLowerCase())) foundInText = true;
+    }
+    if (foundInText) {
+        message.delete();
+    }
+})
 /////////////////////////////////////////////////////  Token Bot Developer  /////////////////////////////////////////////////////
 client.login(process.env.TOKEN);

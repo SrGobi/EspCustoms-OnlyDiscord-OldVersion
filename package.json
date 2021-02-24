@@ -1,6 +1,6 @@
 {
   "name": "espcustoms-onlydiscord-old",
-  "version": "0.0.2b",
+  "version": "0.0.3b",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SrGobi/EspCustoms-OnlyDiscord-Old"
+    "url": "git+https://github.com/SrGobi/esp-customs.git"
   },
   "author": "",
   "license": "ISC",
