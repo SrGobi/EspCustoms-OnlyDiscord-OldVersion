@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const { config } = require('dotenv');
 const fs = require('fs');
+const mongoose = require('mongoose');
 const client = new Discord.Client({disableEveryone: false});
 const Canvas = require('canvas');
 client.commands = new Discord.Collection();
@@ -32,7 +33,7 @@ client.on("ready", () => {
     console.log(`Estoy en linea, mi nombre es ${client.user.username}`);
     let statuses = [
         `${client.guilds.cache.size} servers!`,
-        "!ayuda",
+        "!comandos",
         `over ${client.users.cache.size} users!`
     ]
     setInterval(function() {
@@ -94,7 +95,7 @@ client.on('messageDelete', async message => {
 
     const txt = new Discord.MessageEmbed()
     .setAuthor("Mensaje Borrado", "https://i.imgur.com/W7dd0e7.gif")
-    .setColor('#f2190a')
+    .setColor(process.env.COLORPERMISSIONS)
     .addField("**❯ Usuario:**", message.author.tag)
     .addField("**❯ Borrado:**", message.content)
     .addField("**❯ Borrado en:**", message.channel)

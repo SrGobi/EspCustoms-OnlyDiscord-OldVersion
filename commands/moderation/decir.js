@@ -16,7 +16,7 @@ module.exports = {
 
         if (args[0].toLowerCase() === 'embed') {
             const embed = new Discord.MessageEmbed()
-                .setColor(process.env.COLOR)
+                .setColor(process.env.COLOREMBED)
                 .setDescription(args.slice(1).join(' '))
 
             message.channel.send(embed);

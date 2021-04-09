@@ -21,19 +21,19 @@ module.exports = {
                 message.channel.bulkDelete(number)
                 setTimeout(() => {
                     let embed = new Discord.MessageEmbed()
-                        .setColor(process.env.COLOR)
+                        .setColor('#EF990B')
                         .setTitle(`${number} mensaje fue eliminado por ${gras}${message.author.username}${gras}`)
                     message.channel.send(embed)
                 }, 500);
             }else{
                 let embed = new Discord.MessageEmbed()
-                    .setColor(process.env.COLOR)
+                    .setColor(process.env.COLOREMBED)
                     .setTitle(`Debes ingresar un número entre 1 y 101`)
                 message.channel.send(embed)
             }
         }else{
             let embed = new Discord.MessageEmbed()
-                .setColor(process.env.COLOR)
+                .setColor(process.env.COLORPERMISSIONS)
                 .setTitle(`⛔ **No tienes permiso para limpiar el chat** ⛔`)
            message.channel.send(embed)
        }

@@ -2,14 +2,12 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: 'invites',
+    aliases: [iv],
     category: 'info',
     description: 'Te permite ver las invitaciones realizadas.',
     usage: `invites`,
     run: (client, message, args) => {
         message.delete().catch(O_o => {});
-        let gras = '**';
-        if (!message.member.hasPermission('SEND_MESSAGES'))
-            return message.channel.send('⛔**No tienes permiso para usar este comando.**⛔').then(m => m.delete({timeout: 5000}));
         
         if (args.length < 1) {
             var user = message.author;

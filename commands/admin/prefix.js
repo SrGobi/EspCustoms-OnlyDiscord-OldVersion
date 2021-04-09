@@ -10,7 +10,7 @@ module.exports = {
     run: async (client, message, args) => {
         message.delete();
 
-        if (!message.member.hasPermission('<')) {
+        if (!message.member.hasPermission('ADMINISTRATOR')) {
             return message.channel.send('⛔**No tienes permiso para usar este comando.**⛔').then(m => m.delete({timeout: 10000}));
         };
 

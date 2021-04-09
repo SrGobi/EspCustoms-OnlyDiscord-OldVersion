@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 module.exports = {
     name: 'comandos',
-    aliases: ['c'],
+    aliases: ['cm'],
     category: 'info',
     description: 'Muestra una lista completa de comandos de bot.',
     usage: `comandos`,
@@ -20,9 +20,9 @@ module.exports = {
                     guildID: message.guild.id,
                     guildName: message.guild.name,
                     prefix: process.env.PREFIX,
-                    logChannelID: null
+                    logChannelID: null,
                 });
-    
+
                 newGuild.save()
                 .then(result => console.log(result))
                 .catch(err => console.error(err));
@@ -39,11 +39,11 @@ async function getAll(client, message) {
     });
 
     const embed = new Discord.MessageEmbed()
-    .setColor(process.env.COLOR)
-    .setTitle('Command List')
-    .setThumbnail(client.user.avatarURL())
+    .setColor(process.env.COLOREMBED)
+    .setTitle('LISTA DE COMANDOS')
+    .setThumbnail(client.user.displayAvatarURL())
     .setFooter('Created by SrGobi | BLD SRGOBI#0001')
-    
+
     const commands = (category) => {
         return client.commands
             .filter(cmd => cmd.category === category)

@@ -1,10 +1,11 @@
-# 🤖 ESP CUSTOM (0.0.1b)
+# 🤖 ESP CUSTOM (0.0.2b)
 Un bot simple creado para mostrar las posibilidades de codificar usando la API de Discord.js para crear funciones. Obtendrá más avance con el tiempo.
 
 ## Env
 Es necesario modificarlo example.env
 ```js
-COLOR=#F8F9F9 //Puedes mocificar el color esto se aplica ha todos los embeds
+COLOREMBED=#F8F9F9 //Puedes mocificar el color esto se aplica ha todos los embeds
+COLORPERMISSIONS=#EF0B0B //Puedes mocificar el color esto se aplica ha todos los embeds de permisos denegados
 PREFIX=!
 TOKEN=//TOKEN-DEL-BOT
 MONGO_URI=//"URL-MONGO-DB"
@@ -60,6 +61,7 @@ Háganos saber también qué funciones le gustaría que agreguemos en el futuro.
  | Comandos   |    ✔     |
  | Help       |    ✔     |
  | Invites    |    ✔     |
+ | Serverinfo |    ✔     |
  | Version    |    ✔     |
  
 ### Moderation
