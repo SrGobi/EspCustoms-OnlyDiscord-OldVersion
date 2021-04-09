@@ -44,7 +44,7 @@ client.on("ready", () => {
 client.mongoose.init();
 ////////////////////////////////////////////////////////////////////////////   WELCOME  ///////////////////////////////////////////////////////////////////////////////////
 client.on('guildMemberAdd', async member => {
-    const channel = member.guild.channels.cache.get('#ChannelId');
+    const channel = member.guild.channels.cache.get('#ChannelId'); //El ID del canal donde se dará la bienvenida
     if (!channel) return;
     const backgroundEsp = `${__dirname}imagenes/ESP.jpg`;
     const CircleEnter = `${__dirname}imagenes/CircleEnter.png`;
@@ -71,7 +71,7 @@ client.on('guildMemberAdd', async member => {
     ctx.strokeRect(8, 11, 680, 280);
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), `welcome_${member.user.username}.png`);
-    channel.send(`🎊 Buenas ${member}, Bienvenid@ a **ESP CUSTOMS** <:esp:684175193404342303> 🎊 Read the <#681193531456749593> section\n\n`, attachment);
+    channel.send(`🎊 Buenas ${member}, Bienvenid@ a **ESP CUSTOMS**🎊\n\n`, attachment);
 });
 client.on('message', message => {
 	if (message.content === '!join') {
@@ -102,5 +102,18 @@ client.on('messageDelete', async message => {
 
     logchannel.send(txt)
 });
+/////////////////////////////////////////////////////  Palabras  /////////////////////////////////////////////////////
+client.on('message', async message => {
+    const FILTER_LIST = require('./blacklist.json')
+    let blacklisted = FILTER_LIST;
+    let foundInText = false;
+    for (var i in blacklisted){
+        if (message.channel.id === '<#ChannelId>', '<#OtherChannelId>') //Los ID de canales bloquean palabras
+        if (message.content.toLocaleLowerCase().includes(blacklisted[i].toLocaleLowerCase())) foundInText = true;
+    }
+    if (foundInText) {
+        message.delete();
+    }
+})
 /////////////////////////////////////////////////////  Token Bot Developer  /////////////////////////////////////////////////////
 client.login(process.env.TOKEN);

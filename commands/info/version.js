@@ -14,7 +14,7 @@ module.exports = {
                 .setTitle("ESP CUSTOMS")
                 .setColor(process.env.COLOREMBED)
                 .setThumbnail(client.user.displayAvatarURL())
-                .addField("**Version:**", `${gras}ESP CUSTOMS | v0.0.2b${gras}`, true)
+                .addField("**Version:**", `${gras}ESP CUSTOMS | v0.0.3b${gras}`, true)
                 .addField("**Server Support:**", `https://discord.gg/cqrN3Eg`, true)
                 .addField("**Comandos**", `${gras}Para ver todos los comandos utiliza !comandos${gras}`, false)
                 .setFooter("Created by SrGobi | BLD SRGOBI#0001")

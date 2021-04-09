@@ -20,9 +20,9 @@ module.exports = {
                     guildID: message.guild.id,
                     guildName: message.guild.name,
                     prefix: process.env.PREFIX,
-                    logChannelID: null,
+                    logChannelID: null
                 });
-
+    
                 newGuild.save()
                 .then(result => console.log(result))
                 .catch(err => console.error(err));
@@ -39,11 +39,11 @@ async function getAll(client, message) {
     });
 
     const embed = new Discord.MessageEmbed()
-    .setColor(process.env.COLOREMBED)
+    .setColor(process.env.COLOR)
     .setTitle('LISTA DE COMANDOS')
     .setThumbnail(client.user.displayAvatarURL())
     .setFooter('Created by SrGobi | BLD SRGOBI#0001')
-
+    
     const commands = (category) => {
         return client.commands
             .filter(cmd => cmd.category === category)

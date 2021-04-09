@@ -1,4 +1,4 @@
-# 🤖 ESP CUSTOM (0.0.2b)
+# 🤖 ESP CUSTOM (0.0.3b)
 Un bot simple creado para mostrar las posibilidades de codificar usando la API de Discord.js para crear funciones. Obtendrá más avance con el tiempo.
 
 ## Env
