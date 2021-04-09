@@ -5,7 +5,8 @@ const guildSchema = mongoose.Schema({
     guildID: String,
     guildName: String,
     prefix: String,
-    logChannelID: String
+    logChannelID: String,
+    rankcard: String,
 });
 
 module.exports = mongoose.model('Guild', guildSchema, 'guilds');

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Guild = require('../models/guild');
 
-module.exports = async (client, guild) => {
+module.exports = async (discordclient, guild) => {
     Guild.findOneAndDelete({
         guildID: guild.id
     }, (err, res) => {

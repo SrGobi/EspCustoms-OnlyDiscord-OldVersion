@@ -1,49 +1,68 @@
 const Discord = require('discord.js');
-const { config } = require('dotenv');
+const discordclient = new Discord.Client({disableEveryone: false});
+const Distube = require('distube');
 const fs = require('fs');
-const mongoose = require('mongoose');
-const client = new Discord.Client({disableEveryone: false});
 const Canvas = require('canvas');
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
-client.mongoose = require('./utils/mongoose');
-
-client.categories = fs.readdirSync('./commands/');
+const { config } = require('dotenv');
+discordclient.db = require("quick.db");
+discordclient.commands = new Discord.Collection();
+discordclient.aliases = new Discord.Collection();
+discordclient.mongoose = require('./utils/mongoose');
+discordclient.categories = fs.readdirSync('./commands/');
+discordclient.distube = new Distube(discordclient, {
+    youtubeCookie: config.cookie,
+    searchSongs: true,
+    emitNewSongOnly: true,
+    highWaterMark: 1<<24,
+    leaveOnEmpty: false,
+    leaveOnFinish: false,
+    leaveOnStop: true,
+    searchSongs: false,
+    youtubeDL: true,
+    updateYouTubeDL: false
+})
+discordclient.distube
+.on("playSong", (message, queue, song) => message.channel.send(
+    `**Escuchando** 🎶 \`${song.name}\` - \`${song.formattedDuration}\``
+))
+.on("addSong", (message, queue, song) => message.channel.send(
+    `**Agregada** 👍 ${song.name} - \`${song.formattedDuration}\``
+))
 /////////////////////////////////////////////////////  ENV  /////////////////////////////////////////////////////
 config({
     path: `${__dirname}/.env`
 });
 /////////////////////////////////////////////////////  Handler  /////////////////////////////////////////////////////
 ['command'].forEach(handler => {
-    require(`./handlers/${handler}`)(client);
+    require(`./handlers/${handler}`)(discordclient);
 });
-
 fs.readdir('./events/', (err, files) => {
     if (err) return console.error;
     files.forEach(file => {
         if (!file.endsWith('.js')) return;
         const evt = require(`./events/${file}`);
         let evtName = file.split('.')[0];
-        console.log(`Loaded event '${evtName}'`);
-        client.on(evtName, evt.bind(null, client));
+        console.log(`Evento cargado '${evtName}'`);
+        discordclient.on(evtName, evt.bind(null, discordclient));
     });
 });
 /////////////////////////////////////////////////////  STATUS  /////////////////////////////////////////////////////
-client.on("ready", () => {
-    console.log(`Estoy en linea, mi nombre es ${client.user.username}`);
+discordclient.on("ready", () => {
+    console.log('[DISCORD]', `Estoy en linea, mi nombre es ${discordclient.user.username}`);
     let statuses = [
-        `${client.guilds.cache.size} servers!`,
+        `${discordclient.guilds.cache.size} servers!`,
         "!comandos",
-        `over ${client.users.cache.size} users!`
+        `sobre ${discordclient.users.cache.size} usuarios!`
     ]
     setInterval(function() {
         let status = statuses[Math.floor(Math.random() * statuses.length)];
-        client.user.setActivity(status, {type: "WATCHING"});
+        discordclient.user.setActivity(status, {type: "WATCHING"});
     }, 20000)
 });
-client.mongoose.init();
+
+discordclient.mongoose.init();
 ////////////////////////////////////////////////////////////////////////////   WELCOME  ///////////////////////////////////////////////////////////////////////////////////
-client.on('guildMemberAdd', async member => {
+discordclient.on('guildMemberAdd', async member => {
     const channel = member.guild.channels.cache.get('#ChannelId'); //El ID del canal donde se dará la bienvenida
     if (!channel) return;
     const backgroundEsp = `${__dirname}imagenes/ESP.jpg`;
@@ -73,14 +92,14 @@ client.on('guildMemberAdd', async member => {
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), `welcome_${member.user.username}.png`);
     channel.send(`🎊 Buenas ${member}, Bienvenid@ a **ESP CUSTOMS**🎊\n\n`, attachment);
 });
-client.on('message', message => {
+discordclient.on('message', message => {
 	if (message.content === '!join') {
         if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES"))return message.channel.send("⛔ **No tienes permiso para gestionar mensajes en este canal** ⛔");
-		client.emit('guildMemberAdd', message.member);
+		discordclient.emit('guildMemberAdd', message.member);
 	}
 });
 ////////////////////////////////////////////////////////////////////  ModLog  ////////////////////////////////////////////////////////////////////////
-client.on('messageDelete', async message => {
+discordclient.on('messageDelete', async message => {
     let logchannel = message.guild.channels.cache.find(ch => ch.name === 'esp-log')
     if (!logchannel) return
     //Devolver si no está habilitado.
@@ -103,7 +122,7 @@ client.on('messageDelete', async message => {
     logchannel.send(txt)
 });
 /////////////////////////////////////////////////////  Palabras  /////////////////////////////////////////////////////
-client.on('message', async message => {
+discordclient.on('message', async message => {
     const FILTER_LIST = require('./blacklist.json')
     let blacklisted = FILTER_LIST;
     let foundInText = false;
@@ -116,4 +135,4 @@ client.on('message', async message => {
     }
 })
 /////////////////////////////////////////////////////  Token Bot Developer  /////////////////////////////////////////////////////
-client.login(process.env.TOKEN);
+discordclient.login(process.env.TOKEN);

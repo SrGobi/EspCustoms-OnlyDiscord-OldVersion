@@ -15,10 +15,11 @@ module.exports = {
 
         mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true});
         mongoose.set('useFindAndModify', false);
+        mongoose.set('useCreateIndex', true);
         mongoose.Promise = global.Promise;
 
         mongoose.connection.on('connected', () => {
-            console.log('Mongoose se ha conectado correctamente!');
+            console.log('[DISCORD]', `Mongoose se ha conectado correctamente!`);
         });
 
         mongoose.connection.on('err', err => {
