@@ -1,4 +1,4 @@
-# 🤖 ESP CUSTOM (0.0.3b)
+# 🤖 ESP CUSTOM (0.0.4b)
 Un bot simple creado para mostrar las posibilidades de codificar usando la API de Discord.js para crear funciones. Obtendrá más avance con el tiempo.
 
 ## Env
@@ -77,11 +77,11 @@ Háganos saber también qué funciones le gustaría que agreguemos en el futuro.
 | Loop        |    ❌    |
 | Nowplaying  |    ❌    |
 | Pause       |    ❌    |
-| Play        |    ❌    |
+| Play        |    ✔     |
 | Queue       |    ❌    |
 | Remove      |    ❌    |
 | Resume      |    ❌    |
 | Search      |    ❌    |
-| Skip        |    ❌    |
-| Stop        |    ❌    |
+| Skip        |    ✔     |
+| Stop        |    ✔     |
 | Volume      |    ❌    |
