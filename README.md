@@ -43,13 +43,17 @@ Háganos saber también qué funciones le gustaría que agreguemos en el futuro.
 ### Admin
  | Name          | Progress |
  |---------------|----------|
+ | Ban           |    ✔     |
+ | Playlist (Fortnite) |  ✔ |
  | Prefix        |    ✔     |
+ | Rank-Background|    ✔    |
 
 ### Custom embeds
  | Name   | Progress |
  |--------|----------|
  | Data   |    ✔    |
  | Duo    |    ✔    |
+ | Embed  |    ✔    |
  | Solo   |    ✔    |
  | Trio   |    ✔    |
 
@@ -57,18 +61,23 @@ Háganos saber también qué funciones le gustaría que agreguemos en el futuro.
  | Name       | Progress |
  |------------|----------|
  | Ayuda      |    ✔     |
+ | BotInfo    |    ✔     |
  | Botstats   |    ✔     |
  | Comandos   |    ✔     |
+ | Emojis     |    ✔     |
  | Help       |    ✔     |
  | Invites    |    ✔     |
+ | Rank       |    ✔     |
  | Serverinfo |    ✔     |
  | Version    |    ✔     |
  
 ### Moderation
 | Name        | Progress |
 |-------------|----------|
+| CreatedChannel|    ✔   |
 | Decir       |    ✔     |
 | Limpiar     |    ✔     |
+| LogChannel  |    ✔     |
 | Modlog      |    ✔     |
 
 ### Music
